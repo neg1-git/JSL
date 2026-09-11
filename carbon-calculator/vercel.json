@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm install --install-strategy=hoisted",
+  "installCommand": "npm install --ignore-scripts=false",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite"
