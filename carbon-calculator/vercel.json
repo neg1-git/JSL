@@ -1,0 +1,6 @@
+{
+  "installCommand": "npm install --install-strategy=hoisted",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite"
+}
