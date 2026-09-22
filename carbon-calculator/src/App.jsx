@@ -8,6 +8,7 @@ import BenchmarkBar from './components/BenchmarkBar';
 import ScenarioComparison from './components/ScenarioComparison';
 import Optimizations from './components/Optimizations';
 import EnergyCard from './components/EnergyCard';
+import SensitivityChart from './components/SensitivityChart';
 
 function App() {
   // Input state
@@ -77,6 +78,11 @@ function App() {
         {/* Optimizations */}
         <div className="mt-6">
           <Optimizations suggestions={optimizations} />
+        </div>
+
+        {/* Sensitivity Analysis */}
+        <div className="mt-6">
+          <SensitivityChart currentParams={currentParams} currentTotal={resultA.total} />
         </div>
 
         {/* Scenario Comparison */}

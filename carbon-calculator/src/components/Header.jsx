@@ -1,3 +1,5 @@
+import MethodologyModal from './MethodologyModal';
+
 export default function Header() {
   return (
     <header className="border-b border-slate-700/50 bg-surface/80 backdrop-blur-md sticky top-0 z-50">
@@ -18,6 +20,7 @@ export default function Header() {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          <MethodologyModal />
           <span className="text-xs px-3 py-1.5 rounded-full bg-brand/15 text-brand font-semibold border border-brand/30">
             Net Zero 2050
           </span>

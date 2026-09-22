@@ -122,7 +122,7 @@ export function getBenchmarks() {
   return [
     { name: 'Global Average', value: 2.18, color: '#EF4444' },
     { name: 'EU Average (SS)', value: 2.8, color: '#F59E4C' },
-    { name: 'Outokumpu (Best)', value: 1.8, color: '#22C55E' },
+    { name: 'Outokumpu (Best)', value: 1.6, color: '#22C55E' },
     { name: 'India Avg (SS)', value: 3.5, color: '#EF4444' },
   ];
 }
