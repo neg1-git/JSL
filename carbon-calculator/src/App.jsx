@@ -58,7 +58,12 @@ function App() {
             {/* Top row: Gauge + Breakdown */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <GaugeCard total={resultA.total} />
-              <BreakdownChart breakdown={resultA.breakdown} percentages={resultA.percentages} />
+              <BreakdownChart 
+                breakdown={resultA.breakdown} 
+                percentages={resultA.percentages} 
+                scopes={resultA.scopes}
+                scopePercentages={resultA.scopePercentages}
+              />
             </div>
 
             {/* Benchmark + Energy */}

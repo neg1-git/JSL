@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 
 const COLORS = {
@@ -5,6 +6,9 @@ const COLORS = {
   process: '#E87722',
   energy: '#EAB308',
   alloys: '#A855F7',
+  scope1: '#E87722', // Match process color
+  scope2: '#EAB308', // Match energy color
+  scope3: '#A855F7', // Deep purple for massive scope 3
 };
 
 const LABELS = {
@@ -12,6 +16,9 @@ const LABELS = {
   process: 'Process Route',
   energy: 'Energy / Grid',
   alloys: 'Alloy Additions',
+  scope1: 'Scope 1 (Direct)',
+  scope2: 'Scope 2 (Indirect)',
+  scope3: 'Scope 3 (Value Chain)',
 };
 
 const CustomTooltip = ({ active, payload }) => {
@@ -27,20 +34,47 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-export default function BreakdownChart({ breakdown, percentages }) {
-  const data = Object.entries(breakdown).map(([key, value]) => ({
+export default function BreakdownChart({ breakdown, percentages, scopes, scopePercentages }) {
+  const [view, setView] = useState('factors'); // 'factors' or 'scopes'
+
+  const activeData = view === 'factors' ? breakdown : scopes;
+  const activePercentages = view === 'factors' ? percentages : scopePercentages;
+
+  const data = Object.entries(activeData).map(([key, value]) => ({
     name: key,
     label: LABELS[key],
     value,
-    pct: percentages[key],
+    pct: activePercentages[key],
     color: COLORS[key],
   }));
 
   return (
     <div className="glass-card rounded-2xl p-6">
-      <div className="flex items-center gap-2 mb-4">
-        <div className="w-2 h-6 bg-accent-purple rounded-full" />
-        <h3 className="text-sm font-bold text-slate-300">Emissions Breakdown</h3>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-6 bg-accent-purple rounded-full" />
+          <h3 className="text-sm font-bold text-slate-300">Emissions Breakdown</h3>
+        </div>
+        
+        {/* Toggle Switch */}
+        <div className="flex bg-slate-800/50 rounded-lg p-1">
+          <button
+            onClick={() => setView('factors')}
+            className={`text-xs px-3 py-1 rounded-md font-semibold transition-colors ${
+              view === 'factors' ? 'bg-slate-700 text-white shadow' : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            By Factor
+          </button>
+          <button
+            onClick={() => setView('scopes')}
+            className={`text-xs px-3 py-1 rounded-md font-semibold transition-colors ${
+              view === 'scopes' ? 'bg-slate-700 text-white shadow' : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            By Scope
+          </button>
+        </div>
       </div>
 
       <div className="flex items-center gap-4">

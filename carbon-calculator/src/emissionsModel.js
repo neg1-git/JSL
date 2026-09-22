@@ -95,12 +95,22 @@ export function calculateEmissions({ grade, scrapPercent, processRoute, renewabl
       energy: Math.round(energyEmissions * 100) / 100,
       alloys: Math.round(alloyEmissions * 100) / 100,
     },
+    scopes: {
+      scope1: Math.round(processEmissions * 100) / 100,
+      scope2: Math.round(energyEmissions * 100) / 100,
+      scope3: Math.round((rawMaterialEmissions + alloyEmissions) * 100) / 100,
+    },
     energyGJ: Math.round(totalEnergyGJ * 10) / 10,
     percentages: {
       rawMaterials: Math.round((rawMaterialEmissions / totalEmissions) * 100),
       process: Math.round((processEmissions / totalEmissions) * 100),
       energy: Math.round((energyEmissions / totalEmissions) * 100),
       alloys: Math.round((alloyEmissions / totalEmissions) * 100),
+    },
+    scopePercentages: {
+      scope1: Math.round((processEmissions / totalEmissions) * 100),
+      scope2: Math.round((energyEmissions / totalEmissions) * 100),
+      scope3: Math.round(((rawMaterialEmissions + alloyEmissions) / totalEmissions) * 100),
     },
   };
 }
