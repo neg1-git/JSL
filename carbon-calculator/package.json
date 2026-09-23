@@ -7,7 +7,9 @@
     "dev": "vite",
     "postinstall": "chmod +x ./node_modules/vite/bin/vite.js && chmod +x ./node_modules/.bin/vite",
     "build": "npx vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "react": "^19.1.0",
@@ -15,9 +17,10 @@
     "recharts": "^2.15.3"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.10",
     "@vitejs/plugin-react": "^4.5.2",
     "tailwindcss": "^4.1.10",
-    "@tailwindcss/vite": "^4.1.10",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vitest": "^5.0.1"
   }
 }
