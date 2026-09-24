@@ -7,7 +7,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-3">
             <img 
-              src="/jsl-transportes-seeklogo.png" 
+              src="/jsl-logo.webp" 
               alt="JSL Logo" 
               className="h-10 object-contain" 
             />
